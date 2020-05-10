@@ -68,6 +68,17 @@ class TimerManager(private val context: Context) {
         return timer
     }
 
+    fun stopActiveTimer() {
+        var timer: Timer = activeTimer!!
+
+        check(activeTimer != null) { "There is no active timer to stop." }
+
+        timers = timers.copy(active = null)
+        store.save(timers)
+
+        cancelOutstandingAlarm()
+    }
+
     fun startTimer(timer: Timer) {
         check(timer.isPaused) { "Provided timer is already running." }
 

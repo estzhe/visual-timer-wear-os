@@ -1,7 +1,6 @@
 package com.estzhe.timer.activities
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +34,7 @@ class SelectTimerActivity : BaseTimerActivity()
         }
         runningTimerButton = findViewById<Button>(R.id.runningTimerButton).apply {
             setOnClickListener(activeTimerButtonClickListener)
+            setOnLongClickListener(activeTimerButtonLongClickListener)
         }
         popularTimerButtons = grid.children
                                   .filter {
@@ -83,6 +83,13 @@ class SelectTimerActivity : BaseTimerActivity()
 
     private val activeTimerButtonClickListener = View.OnClickListener {
         startActivity(Intent(this, TimerActivity::class.java))
+    }
+
+    private val activeTimerButtonLongClickListener = View.OnLongClickListener {
+        timerManager.stopActiveTimer()
+        updateTimerButtons()
+
+        true
     }
 
     private val selectTimerButtonClickListener = View.OnClickListener { v ->
