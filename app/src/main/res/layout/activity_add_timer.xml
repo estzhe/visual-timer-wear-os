@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.estzhe.timer.views.DialPicker
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/dialPicker"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:rimSize="0"
+
+    app:minValue="0"
+    app:maxValue="60"
+    app:value="5" />

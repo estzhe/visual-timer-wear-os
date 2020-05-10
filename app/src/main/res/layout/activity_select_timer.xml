@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- TODO: paddingVertical should be smaller for square screens -->
+    <GridLayout
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingVertical="25dp"
+        android:columnCount="2"
+        android:alignmentMode="alignMargins">
+
+        <ImageButton
+            android:id="@+id/addTimerButton"
+            style="@style/Button.AddTimer" />
+
+        <Button
+            android:id="@+id/runningTimerButton"
+            style="@style/Button.RunningTimer" />
+
+        <Button style="@style/Button.PopularTimer" />
+        <Button style="@style/Button.PopularTimer" />
+        <Button style="@style/Button.PopularTimer" />
+        <Button style="@style/Button.PopularTimer" />
+        <Button style="@style/Button.PopularTimer" />
+
+    </GridLayout>
+
+</ScrollView>
