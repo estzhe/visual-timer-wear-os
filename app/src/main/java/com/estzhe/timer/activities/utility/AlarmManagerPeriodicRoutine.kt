@@ -34,10 +34,13 @@ class AlarmManagerPeriodicRoutine(
 
         broadcastIntentActionName = INTENT_ACTION_PREFIX + UUID.randomUUID().toString()
 
+        val intent = Intent(broadcastIntentActionName).apply {
+            flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        }
         broadcastPendingIntent = PendingIntent.getBroadcast(
             context,
             0,
-            Intent(broadcastIntentActionName),
+            intent,
             PendingIntent.FLAG_UPDATE_CURRENT)
 
         broadcastReceiver = object : BroadcastReceiver() {
