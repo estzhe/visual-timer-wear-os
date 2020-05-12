@@ -72,6 +72,8 @@ class SelectTimerActivity : BaseTimerActivity()
     }
 
     private val addTimerButtonClickListener = View.OnClickListener {
+        onUserAction()
+
         startActivityForResult(
             Intent(
                 this,
@@ -82,10 +84,14 @@ class SelectTimerActivity : BaseTimerActivity()
     }
 
     private val activeTimerButtonClickListener = View.OnClickListener {
+        onUserAction()
+
         startActivity(Intent(this, TimerActivity::class.java))
     }
 
     private val activeTimerButtonLongClickListener = View.OnLongClickListener {
+        onUserAction()
+
         timerManager.stopActiveTimer()
         updateTimerButtons()
 
@@ -93,11 +99,15 @@ class SelectTimerActivity : BaseTimerActivity()
     }
 
     private val selectTimerButtonClickListener = View.OnClickListener { v ->
+        onUserAction()
+
         val minutes = (v as Button).text.toString().toInt()
         startTimer(minutes)
     }
 
     private val selectTimerButtonLongClickListener = View.OnLongClickListener { v ->
+        onUserAction()
+
         val minutes = (v as Button).text.toString().toInt()
         timerManager.forgetTimer(minutes)
 

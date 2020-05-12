@@ -8,6 +8,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.View
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import androidx.wear.ambient.AmbientModeSupport
 import com.estzhe.timer.*
 import com.estzhe.timer.activities.utility.*
@@ -99,6 +100,8 @@ class TimerActivity
             return false
         }
 
+        onUserAction()
+
         val timer: Timer = timerManager.activeTimer ?: return false
 
         if (timer.isPaused) {
@@ -111,6 +114,11 @@ class TimerActivity
         }
 
         return true
+    }
+
+    override fun onBackPressed() {
+        alarmAnimation.end()
+        super.onBackPressed()
     }
 
     override fun onEnterAmbient(ambientDetails: Bundle) {
@@ -173,6 +181,7 @@ class TimerActivity
         init {
             dial.setOnClickListener {
                 if (started) {
+                    context.onUserAction()
                     end()
                 }
             }
@@ -211,7 +220,7 @@ class TimerActivity
         }
 
         fun end() {
-            check(started) { "Alarm animation cannot be ended because it was not started." }
+            if (!started) return
 
             vibrator.cancel()
 

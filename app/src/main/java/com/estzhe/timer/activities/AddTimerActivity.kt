@@ -10,7 +10,7 @@ import com.estzhe.timer.views.DialPicker
 import kotlinx.android.synthetic.main.activity_timer.*
 
 class AddTimerActivity
-    : FragmentActivity(),
+    : BaseTimerActivity(),
       DialPicker.OnValuePickListener
 {
     companion object {
@@ -34,6 +34,8 @@ class AddTimerActivity
     }
 
     override fun onPick(value: Int) {
+        onUserAction()
+
         if (value == dialPicker.minValue) {
             Toast.makeText(
                 this@AddTimerActivity,
