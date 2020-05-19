@@ -118,7 +118,12 @@ class DialPicker(context: Context, attributes: AttributeSet)
             }
 
             if (consecutiveRotaryEvents % 7 == 0) {
-                val newValue = value + direction
+                // We invert direction here because:
+                //  - rotating side buttons are usually located on the right
+                //  - downward rotation direction (reported as negative direction here)
+                //    matches with clockwise movement of the dial arrow, which intuitively
+                //    is expected to increase value (positive direction).
+                val newValue = value + -direction
                 value = when {
                     newValue < minValue -> maxValue
                     newValue > maxValue -> minValue
