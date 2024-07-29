@@ -8,7 +8,6 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.View
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
 import androidx.wear.ambient.AmbientModeSupport
 import com.estzhe.timer.*
 import com.estzhe.timer.activities.utility.*

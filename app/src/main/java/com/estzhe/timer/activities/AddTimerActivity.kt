@@ -2,12 +2,9 @@ package com.estzhe.timer.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.wearable.activity.WearableActivity
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import com.estzhe.timer.R
 import com.estzhe.timer.views.DialPicker
-import kotlinx.android.synthetic.main.activity_timer.*
 
 class AddTimerActivity
     : BaseTimerActivity(),

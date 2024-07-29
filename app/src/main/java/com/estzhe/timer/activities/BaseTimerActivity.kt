@@ -1,7 +1,6 @@
 package com.estzhe.timer.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import androidx.fragment.app.FragmentActivity

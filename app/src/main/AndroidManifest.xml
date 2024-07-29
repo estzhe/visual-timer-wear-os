@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.estzhe.timer" >
+    package="com.estzhe.timer"
+    android:versionCode="1"
+    android:versionName="1.0">
 
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE"/>
 
@@ -25,7 +28,8 @@
 
         <activity
             android:name=".activities.SelectTimerActivity"
-            android:label="Visual Timer">
+            android:exported="true"
+            android:taskAffinity="com.estzhe.timer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -35,11 +39,13 @@
         <activity
             android:name=".activities.TimerActivity"
             android:label="Timer"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:taskAffinity="com.estzhe.timer" />
 
         <activity
             android:name=".activities.AddTimerActivity"
-            android:label="Add New Timer" />
+            android:label="Add New Timer"
+            android:taskAffinity="com.estzhe.timer" />
 
     </application>
 

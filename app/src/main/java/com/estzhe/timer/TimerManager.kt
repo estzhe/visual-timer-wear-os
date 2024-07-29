@@ -133,7 +133,7 @@ class TimerManager(private val context: Context) {
             context,
             0,
             intent,
-            flags
+            flags or PendingIntent.FLAG_IMMUTABLE
         )
     }
 }

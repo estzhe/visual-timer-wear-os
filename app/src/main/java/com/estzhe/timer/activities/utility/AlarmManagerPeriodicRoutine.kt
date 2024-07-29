@@ -1,5 +1,6 @@
 package com.estzhe.timer.activities.utility
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
@@ -41,7 +42,7 @@ class AlarmManagerPeriodicRoutine(
             context,
             0,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
@@ -76,12 +77,16 @@ class AlarmManagerPeriodicRoutine(
         startTimeMs = null
     }
 
+    @SuppressLint("MissingPermission")
     private fun scheduleNextTrigger() {
         val now = System.currentTimeMillis()
         val drift = (now - startTimeMs!!) % intervalMs
         val triggerTime = now + intervalMs - drift
 
-        alarmManager.setExact(
+        // We ask for USE_EXACT_ALARM permission, which is granted on installation.
+        // The linter does not cover this case.
+        // https://developer.android.com/develop/background-work/services/alarms/schedule#exact-permission-declare
+        alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             triggerTime,
             broadcastPendingIntent)
